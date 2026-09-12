@@ -1,4 +1,4 @@
-namespace Domain;
+namespace EventsHub.Domain;
 // abstraction of real objects that will conform the system; classes that let us define/model our system
 public class Event
 {

@@ -1,5 +1,5 @@
-using Domain;
-using Persistence;
+using EventsHub.Domain;
+using EventsHub.Persistence;
 
 public static class DbInitializer
 {
