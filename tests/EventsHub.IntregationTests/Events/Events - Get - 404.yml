@@ -8,9 +8,22 @@ http:
   url: "{{baseUrl}}/events/:eventsId"
   params:
     - name: eventsId
-      value: 097fff61-6b61-4144-bf1e-8f2235e71320
+      value: Non-existing-event
       type: path
   auth: inherit
+
+runtime:
+  scripts:
+    - type: tests
+      code: |-
+        test("Status code is 404 NOT FOUND", function() {
+          expect(res.getStatus()).to.equal(404);
+        });
+
+        test("Response returns an array", function() {
+          const body = res.getBody();
+          expect(body).to.be.equal("The event was not found");
+        });
 
 settings:
   encodeUrl: true
