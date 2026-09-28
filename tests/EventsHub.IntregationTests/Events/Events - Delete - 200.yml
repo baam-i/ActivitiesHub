@@ -4,11 +4,11 @@ info:
   seq: 6
 
 http:
-  method: PUT
+  method: DELETE
   url: "{{baseUrl}}/events/:eventId"
   params:
     - name: eventId
-      value: 097fff61-6b61-4144-bf1e-8f2235e71320
+      value: ""
       type: path
   auth: inherit
 
