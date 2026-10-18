@@ -9,7 +9,7 @@ export default function NavBar({ openForm }: Props) {
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static"
-        sx={{ backgroundImage: "linear-gradient(135deg, red 0%, blue 70%, green 90%)" }}>
+        sx={{ bgcolor: "#262626" }}>
         <Container maxWidth="xl">
           <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
             <MenuList>
@@ -23,7 +23,17 @@ export default function NavBar({ openForm }: Props) {
               <MenuItem sx={{ fontSize: "1.2rem", textTransform: "uppercase" }}>About</MenuItem>
               <MenuItem sx={{ fontSize: "1.2rem", textTransform: "uppercase" }}>Contact</MenuItem>
             </MenuList>
-            <Button onClick={openForm} size="large" variant="contained" color="warning">Create activity</Button>
+            <Button
+  onClick={openForm}
+  size="large"
+  variant="contained"
+  sx={{
+    backgroundColor: '#5d5d5d', // Tu color personalizado aquí (HEX, RGB, etc.)
+    '&:hover': {
+      backgroundColor: '#ad6452', // Color que tendrá cuando el usuario pase el mouse encima
+    },
+  }}
+>Create activity</Button>
           </Toolbar>
         </Container>
       </AppBar>
