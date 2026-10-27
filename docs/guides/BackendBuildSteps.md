@@ -6,26 +6,26 @@
 >
 > Commands are written for **PowerShell** and are run from the **repository
 > root** (the folder containing the solution file). Where a commit only records
-> the *result* of a tool (an EF migration, an NSwag-generated file), the command
+> the _result_ of a tool (an EF migration, an NSwag-generated file), the command
 > that produces that result is given so the state can be reproduced.
 
 ---
 
 ## Commit map
 
-| # | Commit | Date | Summary | Touches `src/` |
-|---|--------|------|---------|:---:|
-| 0 | `f0d9c80` | 2026-08-24 | Initial commit — `.gitignore`, `README.md` only | — |
-| 1 | `20fb7d1` | 2026-08-24 | Add initial boilerplate (Clean Architecture skeleton) | ✅ |
-| 2 | `6a37ba7` | 2026-08-24 | Cleanup boilerplate | ✅ |
-| 3 | `a0a93ef` | 2026-08-25 | Add entity and EF boilerplate | ✅ |
-| 4 | `66494c6` | 2026-08-26 | Add first entity and initial migration | ✅ |
-| 5 | `668887e` | 2026-08-27 | Add DB initializer (seed data) | ✅ |
-| — | `d5a0b05`, `6bf43a3`, `d738e9d`, `425a70c` | 2026-08-27/28 | `OpenApi.md` design-doc drafts (`openapi v1/v2/v3`) | — |
-| 6 | `2fe4d9c` | 2026-08-28 | Rename solution, projects, folders and namespaces → **EventsHub** | ✅ |
-| 7 | `cc2e216` | 2026-08-28 | Add Events controller (+ shared base controller) | ✅ |
-| — | `cff6364`, `807bb12` | 2026-08-31 / 09-01 | Bruno integration tests (under `tests/`, not `src/`) | — |
-| 8 | `e416730` | 2026-09-02 | Add OpenAPI document host + NSwag RPC client generation | ✅ |
+| #   | Commit                                     | Date               | Summary                                                           | Touches `src/` |
+| --- | ------------------------------------------ | ------------------ | ----------------------------------------------------------------- | :------------: |
+| 0   | `f0d9c80`                                  | 2026-08-24         | Initial commit — `.gitignore`, `README.md` only                   |       —        |
+| 1   | `20fb7d1`                                  | 2026-08-24         | Add initial boilerplate (Clean Architecture skeleton)             |       ✅       |
+| 2   | `6a37ba7`                                  | 2026-08-24         | Cleanup boilerplate                                               |       ✅       |
+| 3   | `a0a93ef`                                  | 2026-08-25         | Add entity and EF boilerplate                                     |       ✅       |
+| 4   | `66494c6`                                  | 2026-08-26         | Add first entity and initial migration                            |       ✅       |
+| 5   | `668887e`                                  | 2026-08-27         | Add DB initializer (seed data)                                    |       ✅       |
+| —   | `d5a0b05`, `6bf43a3`, `d738e9d`, `425a70c` | 2026-08-27/28      | `OpenApi.md` design-doc drafts (`openapi v1/v2/v3`)               |       —        |
+| 6   | `2fe4d9c`                                  | 2026-08-28         | Rename solution, projects, folders and namespaces → **EventsHub** |       ✅       |
+| 7   | `cc2e216`                                  | 2026-08-28         | Add Events controller (+ shared base controller)                  |       ✅       |
+| —   | `cff6364`, `807bb12`                       | 2026-08-31 / 09-01 | Bruno integration tests (under `tests/`, not `src/`)              |       —        |
+| 8   | `e416730`                                  | 2026-09-02         | Add OpenAPI document host + NSwag RPC client generation           |       ✅       |
 
 Final project layout (after step 8):
 
@@ -49,7 +49,7 @@ src/
 
 Empty repository: only `.gitignore` (Visual Studio / .NET template) and a
 one-line `README.md` (`# ActivitiesHub` — the project was originally called
-*ActivitiesHub*; it is renamed to *EventsHub* in step 6).
+_ActivitiesHub_; it is renamed to _EventsHub_ in step 6).
 
 ---
 
@@ -87,9 +87,9 @@ Details captured in the commit:
   `/src/` solution folder.
 - `API` still contains the unmodified template output: `Program.cs` with
   `AddControllers()` + `AddOpenApi()` + `MapOpenApi()` + `UseHttpsRedirection()`
-  + `UseAuthorization()`, `Controllers/WeatherForecastController.cs`,
-  `WeatherForecast.cs`, `API.http`, a two-profile `launchSettings.json`, and
-  `appsettings*.json`.
+  - `UseAuthorization()`, `Controllers/WeatherForecastController.cs`,
+    `WeatherForecast.cs`, `API.http`, a two-profile `launchSettings.json`, and
+    `appsettings*.json`.
 - `Application`, `Domain`, `Persistence` each contain only a placeholder
   `Class1.cs`.
 
@@ -261,12 +261,12 @@ dotnet add src/API/API.csproj                 package Microsoft.EntityFrameworkC
 A pure rename pass: **ActivitiesHub → EventsHub** across the solution, projects,
 folders and namespaces. Nothing about behaviour changes.
 
-| Before | After |
-|--------|-------|
-| `ActivitiesHub.slnx` | `EventsHub.slnx` |
-| `src/API/` · `API.csproj` · namespace `API` | `src/EventsHub.Api/` · `EventsHub.Api.csproj` · namespace `EventsHub.Api` |
-| `src/Application/` · `Application.csproj` | `src/EventsHub.Application/` · `EventsHub.Application.csproj` |
-| `src/Domain/` · `Domain.csproj` · namespace `Domain` | `src/EventsHub.Domain/` · `EventsHub.Domain.csproj` · namespace `EventsHub.Domain` |
+| Before                                                              | After                                                                                             |
+| ------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
+| `ActivitiesHub.slnx`                                                | `EventsHub.slnx`                                                                                  |
+| `src/API/` · `API.csproj` · namespace `API`                         | `src/EventsHub.Api/` · `EventsHub.Api.csproj` · namespace `EventsHub.Api`                         |
+| `src/Application/` · `Application.csproj`                           | `src/EventsHub.Application/` · `EventsHub.Application.csproj`                                     |
+| `src/Domain/` · `Domain.csproj` · namespace `Domain`                | `src/EventsHub.Domain/` · `EventsHub.Domain.csproj` · namespace `EventsHub.Domain`                |
 | `src/Persistence/` · `Persistence.csproj` · namespace `Persistence` | `src/EventsHub.Persistence/` · `EventsHub.Persistence.csproj` · namespace `EventsHub.Persistence` |
 
 Also in this commit:
@@ -417,7 +417,9 @@ not-yet-generated document; output is the `Generated/` folder:
 ```json
 {
   "runtime": "Net100",
-  "documentGenerator": { "fromDocument": { "url": "../openapi/EventsHub.v1.json" } },
+  "documentGenerator": {
+    "fromDocument": { "url": "../openapi/EventsHub.v1.json" }
+  },
   "codeGenerators": {
     "openApiToCSharpClient": {
       "generateClientClasses": true,
@@ -472,10 +474,10 @@ Also added in this commit: `.vscode/settings.json`, and the design doc moved to
 
 ## What is generated vs. hand-maintained
 
-| Path | Origin | Maintenance |
-|------|--------|-------------|
-| `src/EventsHub.*/**/*.cs` (non-migration), `*.csproj`, `Program.cs` | Hand-written | Edit directly |
-| `src/EventsHub.Persistence/Migrations/**` | `dotnet ef migrations add` | Regenerate; don't hand-edit |
-| `src/nswag/EventsHub.nswag` | Hand-authored | Edit for codegen config changes only |
-| `src/openapi/EventsHub.v1.json` | NSwag (pipeline 8d.2) | **Never hand-edit** |
-| `src/EventsHub.OpenApi/Generated/*.generated.cs` | NSwag (pipeline 8d.4) | **Never hand-edit** |
+| Path                                                                | Origin                     | Maintenance                          |
+| ------------------------------------------------------------------- | -------------------------- | ------------------------------------ |
+| `src/EventsHub.*/**/*.cs` (non-migration), `*.csproj`, `Program.cs` | Hand-written               | Edit directly                        |
+| `src/EventsHub.Persistence/Migrations/**`                           | `dotnet ef migrations add` | Regenerate; don't hand-edit          |
+| `src/nswag/EventsHub.nswag`                                         | Hand-authored              | Edit for codegen config changes only |
+| `src/openapi/EventsHub.v1.json`                                     | NSwag (pipeline 8d.2)      | **Never hand-edit**                  |
+| `src/EventsHub.OpenApi/Generated/*.generated.cs`                    | NSwag (pipeline 8d.4)      | **Never hand-edit**                  |
